@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
       - name: sysdig-jenkins
-        image: samgabrail/sysdig-jenkins:latest
+        image: samgabrail/sysdig-jenkins:2f04259
         ports:
         - containerPort: 8001
