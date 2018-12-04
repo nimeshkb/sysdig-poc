@@ -2,6 +2,6 @@ from bottle import route, run
 
 @route('/sysdig')
 def sysdig():
-    return "Hello Sysdig, what's up!"
+    return "Sysdig Rocks!"
 
 run(host='0.0.0.0', port=8001, debug=True)
