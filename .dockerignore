@@ -1,0 +1,8 @@
+.git
+.gitignore
+Dockerfile
+README.md
+danger.txt
+sysdig-jenkins-deployment.yaml
+sysdig-jenkins-service.yaml
+values.yaml
