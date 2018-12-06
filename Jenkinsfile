@@ -3,6 +3,7 @@ node {
         def GITHASH = checkout(scm).GIT_COMMIT
         env.GITHASH = GITHASH
         env.GITID = sh "echo ${env.GITHASH} | cut -c1-7"
+        sh "echo GITID"
     }
     stage('Build Image') {
         sh '''
