@@ -1,7 +1,7 @@
 node {
     stage('Checkout') {
         def GITID = checkout(scm).GIT_COMMIT
-        sh 'echo ${GITID}'
+        sh 'echo ${env.GITID}'
     }
     stage('Build Image') {
         sh '''
