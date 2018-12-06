@@ -5,6 +5,7 @@ node {
     stage('Build Image') {
         sh '''
             # find the short git SHA
+            sh "echo ${env.BRANCH_NAME}"
             GITID=$(echo ${GIT_COMMIT} | cut -c1-7)
             echo ${GITID}
             # build the demo using the existing Dockerfile and tag the image with the short git SHA
