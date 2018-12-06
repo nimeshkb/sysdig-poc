@@ -37,5 +37,11 @@ node {
             docker push samgabrail/sysdig-jenkins:${GITID}           
         '''
     }
+    stage('Deploy App') {
+        sh '''
+            # deploy the app
+            kubectl set image deployment/sysdig-jenkins sysdig-jenkins=samgabrail/sysdig-jenkins:${GITID}          
+        '''
+    }
 }
 
