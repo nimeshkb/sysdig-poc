@@ -1,8 +1,8 @@
 node {
     stage('Checkout') {
         def GITHASH = checkout(scm).GIT_COMMIT
-        env.GITID = GITHASH
-        sh "echo ${env.GITID}"
+        env.GITHASH = GITHASH
+        env.GITID = sh "echo ${env.GITHASH} | cut -c1-7"
     }
     stage('Build Image') {
         sh '''
