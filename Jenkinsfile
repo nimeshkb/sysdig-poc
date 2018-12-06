@@ -6,8 +6,11 @@ node {
         sh '''
             # find the short git SHA
             sh "echo ${env.GIT_COMMIT}"
-            GITID=$(echo ${GIT_COMMIT} | cut -c1-7)
+            "git rev-parse --short HEAD > .git/commit-id"                        
+            GITID = readFile('.git/commit-id')
             echo ${GITID}
+            #GITID=$(echo ${GIT_COMMIT} | cut -c1-7)
+            #echo ${GITID}
             # build the demo using the existing Dockerfile and tag the image with the short git SHA
             docker build -t samgabrail/sysdig-jenkins-dev:${GITID} .            
         '''
