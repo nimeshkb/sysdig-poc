@@ -6,8 +6,6 @@ node {
         sh '''
             # find the short git SHA
             echo ${env.GIT_COMMIT}
-            "git rev-parse --short HEAD > .git/commit-id"                        
-            GITID = readFile('.git/commit-id')
             echo ${GITID}
             #GITID=$(echo ${GIT_COMMIT} | cut -c1-7)
             #echo ${GITID}
