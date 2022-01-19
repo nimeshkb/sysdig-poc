@@ -28,7 +28,9 @@ node {
         }
     }
     stage('Scanning Image') {
-        anchore 'sysdig_secure_images'
+        steps {
+            sysdig engineCredentialsId: 'sysdig-secure-api-credentials', name: 'sysdig_secure_images', inlineScanning: true
+        }
     }
     stage('Push Successfully Scanned Image to Prod') {
         sh '''
