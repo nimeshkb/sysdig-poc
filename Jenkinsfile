@@ -12,7 +12,7 @@ node {
             #GITID=$(echo ${GIT_COMMIT} | cut -c1-7)
             #echo ${GITID}
             # build the demo using the existing Dockerfile and tag the image with the short git SHA
-            docker build -t samgabrail/sysdig-jenkins-dev:${GITID} .            
+            docker build -t nimeshkb/sysdig-dev:${GITID} .            
         '''
     }
     stage('Push Image to Dev') {
@@ -21,9 +21,9 @@ node {
                 # docker login
                 echo "logging in to Dockerhub"
                 docker login -u ${dockerhubUsername} -p ${dockerhubPassword}
-                docker push samgabrail/sysdig-jenkins-dev:${GITID}
+                docker push nimeshkb/sysdig-dev:${GITID}
                 # add image to sysdig_secure_images file
-                echo samgabrail/sysdig-jenkins-dev:${GITID} > sysdig_secure_images
+                echo nimeshkb/sysdig-dev:${GITID} > sysdig_secure_images
             '''
         }
     }
@@ -33,8 +33,8 @@ node {
     stage('Push Successfully Scanned Image to Prod') {
         sh '''
             # docker tag the dev image to prod image
-            docker tag samgabrail/sysdig-jenkins-dev:${GITID} samgabrail/sysdig-jenkins:${GITID}
-            docker push samgabrail/sysdig-jenkins:${GITID}           
+            docker tag nimeshkb/sysdig-jenkins-dev:${GITID} nimeshkb/sysdig:${GITID}
+            docker push nimeshkb/sysdig:${GITID}           
         '''
     }
     stage('Deploy App') {
